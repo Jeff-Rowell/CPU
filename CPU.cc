@@ -469,24 +469,24 @@ int main(int argc, char **argv)
         processes.push_back(process_i);
     }
 
-    WRITES("processes.size():");
-    WRITEI(processes.size());
-    WRITES("\n");
-
-    for(int i = 0; i < processes.size(); i++)
-    {
-        PCB* front = processes.front();
-        processes.pop_front();
-        processes.push_back(front);
-
-        WRITES("PROCESS:");
-        WRITEI(i + 1);
-        WRITES("\n");
-        cout << front;
-        WRITES("\n\n");
-    }
-
-    WRITES("---- DONE PRINTING.\n\n");
+//    WRITES("processes.size():");
+//    WRITEI(processes.size());
+//    WRITES("\n");
+//
+//    for(int i = 0; i < processes.size(); i++)
+//    {
+//        PCB* front = processes.front();
+//        processes.pop_front();
+//        processes.push_back(front);
+//
+//        WRITES("PROCESS:");
+//        WRITEI(i + 1);
+//        WRITES("\n");
+//        cout << front;
+//        WRITES("\n\n");
+//    }
+//
+//    WRITES("---- DONE PRINTING.\n\n");
     boot();
 
     create_idle();
