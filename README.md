@@ -1,6 +1,5 @@
-# CPU
-OS Assignment #3
-==================
+# CPU -- OS Assignment #3
+==========================
 This program does the following.
 1) Create handlers for two signals.
 2) Create an idle process which will be executed when there is nothing
@@ -10,7 +9,7 @@ This program does the following.
 If compiled with -DEBUG, when run it should produce the following
 output (approximately):
 
-$ ./a.out
+./a.out
 state:        3
 name:         IDLE
 pid:          21145
