@@ -308,7 +308,6 @@ void scheduler(int signum)
         PCB *front = processes.front();
         processes.pop_front();
         processes.push_back(front);
-        running_pid_start = running->pid;
         front->interrupts++;
 
         if(front->state == NEW)
