@@ -303,7 +303,7 @@ void scheduler(int signum)
     sys_time++;
     int found_one = 0, running_pid_start = running->pid;
 
-    for(int i = 0; i < processes.size(); i++)
+    for(int i = 0; (unsigned)i < processes.size(); i++)
     {
         PCB *front = processes.front();
         processes.pop_front();
@@ -344,7 +344,6 @@ void scheduler(int signum)
         if(!found_one)
         {
             idle->state = RUNNING;
-            //running = idle; //I added this
             if (kill(idle->pid, SIGCONT) == -1)
             {
                 kill(0, SIGTERM);
@@ -375,7 +374,7 @@ void process_done(int signum)
     WRITES("---- entering process_done\n");
 
     // might have multiple children done.
-    for(int i = 0; i < processes.size(); i++)
+    for(int i = 0; (unsigned)i < processes.size(); i++)
     {
         int status, cpid;
 
@@ -403,6 +402,9 @@ void process_done(int signum)
                 {
                     (process)->state = TERMINATED;
                     cout << (process);
+                    WRITES("TOTAL SYSTEM TIME:");
+                    WRITEI(sys_time);
+                    WRITES("\n");
                 }
             }
         }
@@ -420,7 +422,6 @@ void process_done(int signum)
 
     WRITES("---- leaving process_done\n");
 }
-
 
 /*
 ** set up the "hardware"
