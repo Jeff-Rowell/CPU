@@ -343,7 +343,6 @@ void scheduler(int signum)
         }
         if(!found_one)
         {
-            WRITES("running IDLE process\n")
             idle->state = RUNNING;
             //running = idle; //I added this
             if (kill(idle->pid, SIGCONT) == -1)
@@ -399,18 +398,19 @@ void process_done(int signum)
             list<PCB *>::iterator PCB_iter;
             for(PCB_iter = processes.begin(); PCB_iter != processes.end(); PCB_iter++)
             {
-                if((*PCB_iter)->pid == cpid)
+                PCB* process = *PCB_iter;
+                if((process)->pid == cpid)
                 {
-                    (*PCB_iter)->state = TERMINATED;
-                    cout << (*PCB_iter);
+                    (process)->state = TERMINATED;
+                    cout << (process);
                 }
             }
         }
     }
 
     /* restart idle process */
+    idle->state = RUNNING;
     running = idle;
-    running->state = RUNNING;
     if(kill(running->pid, SIGCONT) == -1)
     {
         WRITES("in process_done kill error: ");
