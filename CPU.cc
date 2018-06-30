@@ -301,7 +301,7 @@ void scheduler(int signum)
     WRITES("---- entering scheduler\n");
     assert(signum == SIGALRM);
     sys_time++;
-    int found_one = 0, running_pid_start;
+    int found_one = 0;
 
     for(int i = 0; (unsigned)i < processes.size(); i++)
     {
