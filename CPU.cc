@@ -312,6 +312,7 @@ void scheduler(int signum)
 
         if(front->state == NEW)
         {
+            WRITES("running NEW process\n");
             front->state = RUNNING;
             front->ppid = getpid();
             front->switches = 0;
@@ -321,9 +322,6 @@ void scheduler(int signum)
 
             if((front->pid = fork()) == 0)
             {
-                WRITES("continuing");
-                WRITEI(front->pid);
-                WRITES("\n");
                 assertsyscall(execl(front->name, front->name, NULL), != -1);
             }
             found_one = 1;
@@ -331,9 +329,7 @@ void scheduler(int signum)
         }
         else if(front->state == READY)
         {
-            WRITES("continuing");
-            WRITEI(front->pid);
-            WRITES("\n");
+            WRITES("running READY process\n");
             front->state = RUNNING;
             running = front;
             if(kill(front->pid, SIGCONT) == -1)
@@ -354,9 +350,7 @@ void scheduler(int signum)
         }
         if(!found_one)
         {
-            WRITES("continuing");
-            WRITEI(idle->pid);
-            WRITES("\n");
+            WRITES("running IDLE process\n")
             idle->state = RUNNING;
             running = idle; //I added this
             if (kill(idle->pid, SIGCONT) == -1)
@@ -366,7 +360,13 @@ void scheduler(int signum)
         }
     }
 
-    WRITES("---- leaving scheduler\n");
+    if(running->pid > 0)
+    {
+        WRITES("continuing");
+        WRITEI(running->pid);
+        WRITES("\n");
+        WRITES("---- leaving scheduler\n");
+    }
 }
 
 void process_done(int signum)
@@ -469,24 +469,6 @@ int main(int argc, char **argv)
         processes.push_back(process_i);
     }
 
-    WRITES("processes.size():");
-    WRITEI(processes.size());
-    WRITES("\n");
-
-    for(int i = 0; i < processes.size(); i++)
-    {
-        PCB* front = processes.front();
-        processes.pop_front();
-        processes.push_back(front);
-
-        WRITES("PROCESS:");
-        WRITEI(i + 1);
-        WRITES("\n");
-        cout << front;
-        WRITES("\n\n");
-    }
-
-    WRITES("---- DONE PRINTING.\n\n");
     boot();
 
     create_idle();
