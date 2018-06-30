@@ -301,13 +301,15 @@ void scheduler(int signum)
     WRITES("---- entering scheduler\n");
     assert(signum == SIGALRM);
     sys_time++;
-    int found_one = 0, running_pid_start = running->pid;
+    int found_one = 0, running_pid_start;
 
     for(int i = 0; (unsigned)i < processes.size(); i++)
     {
         PCB *front = processes.front();
         processes.pop_front();
         processes.push_back(front);
+        running_pid_start = running->pid;
+        front->interrupts++;
 
         if(front->state == NEW)
         {
@@ -330,7 +332,10 @@ void scheduler(int signum)
         {
             WRITES("running READY process\n");
             front->state = RUNNING;
+            front->switches++;
+            WRITES("a switch has occurred\n");
             running = front;
+
             if(kill(front->pid, SIGCONT) == -1)
             {
                 WRITES("in scheduler kill error: ");
@@ -351,15 +356,6 @@ void scheduler(int signum)
         }
     }
 
-    if(running->pid == running_pid_start)
-    {
-        running->interrupts++;
-    }
-    else
-    {
-        running->interrupts++;
-        running->switches++;
-    }
     if(running->pid > 0)
     {
         WRITES("continuing");
@@ -402,8 +398,8 @@ void process_done(int signum)
                 {
                     (process)->state = TERMINATED;
                     cout << (process);
-                    WRITES("TOTAL SYSTEM TIME:");
-                    WRITEI(sys_time);
+                    WRITES("total system time:");
+                    WRITEI( (sys_time) - process->started);
                     WRITES("\n");
                 }
             }
