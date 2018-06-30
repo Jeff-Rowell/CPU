@@ -270,8 +270,6 @@ void send_signals(int signal, int pid, int interval, int number)
     dmess("at end of send_signals");
 }
 
-//                                SIGALRM  ,     ISR
-//                                SIGCHLD  ,     ISR
 struct sigaction *create_handler(int signum, void(*handler)(int))
 {
     struct sigaction *action = new(struct sigaction);
@@ -347,7 +345,7 @@ void scheduler(int signum)
         {
             WRITES("running IDLE process\n")
             idle->state = RUNNING;
-            running = idle; //I added this
+            //running = idle; //I added this
             if (kill(idle->pid, SIGCONT) == -1)
             {
                 kill(0, SIGTERM);
@@ -403,11 +401,21 @@ void process_done(int signum)
             {
                 if((*PCB_iter)->pid == cpid)
                 {
-                    cout << (*PCB_iter);
                     (*PCB_iter)->state = TERMINATED;
+                    cout << (*PCB_iter);
                 }
             }
         }
+    }
+
+    /* restart idle process */
+    running = idle;
+    running->state = RUNNING;
+    if(kill(running->pid, SIGCONT) == -1)
+    {
+        WRITES("in process_done kill error: ");
+        WRITEI(errno);
+        WRITES("\n");
     }
 
     WRITES("---- leaving process_done\n");

@@ -9,12 +9,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b075983-a92c-4d86-b576-d8e237a2730f" name="Default" comment="Got the printing info in scheduler() functioning the way that it should.">
-      <change afterPath="$PROJECT_DIR$/test.c" afterDir="false" />
+    <list default="true" id="0b075983-a92c-4d86-b576-d8e237a2730f" name="Default" comment="Now executes idle process if no other processes are to be run.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CPU" beforeDir="false" afterPath="$PROJECT_DIR$/CPU" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CPU.cc" beforeDir="false" afterPath="$PROJECT_DIR$/CPU.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CPU.dSYM/Contents/Resources/DWARF/CPU" beforeDir="false" afterPath="$PROJECT_DIR$/CPU.dSYM/Contents/Resources/DWARF/CPU" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.c" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CPU.cc" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CPU.cc" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CPU.cc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3691">
-              <caret line="365" column="5" selection-start-line="365" selection-start-column="5" selection-end-line="365" selection-end-column="5" />
+            <state relative-caret-position="392">
+              <caret line="431" column="17" lean-forward="true" selection-start-line="431" selection-start-column="17" selection-end-line="431" selection-end-column="17" />
               <folding>
                 <element signature="e#3331#3673#0" expanded="true" />
               </folding>
@@ -37,16 +37,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.c" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>sys_time</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,8 +50,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/CPU.cc" />
         <option value="$PROJECT_DIR$/test.c" />
+        <option value="$PROJECT_DIR$/CPU.cc" />
       </list>
     </option>
   </component>
@@ -116,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530314993660</updated>
-      <workItem from="1530314994877" duration="5571000" />
+      <workItem from="1530314994877" duration="11305000" />
     </task>
     <task id="LOCAL-00001" summary="Commented out printing information">
       <created>1530315306769</created>
@@ -160,17 +156,24 @@
       <option name="project" value="LOCAL" />
       <updated>1530323686420</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added simple new file to test program with">
+      <created>1530327876794</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1530327876794</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5571000" />
+    <option name="totallyTimeSpent" value="11305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="832" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10972222" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1423611" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="LuaJ" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" weight="0.3298153" />
@@ -210,23 +213,29 @@
     <MESSAGE value="Uncommented printing information" />
     <MESSAGE value="Added simple bash script to test program with" />
     <MESSAGE value="Got the printing info in scheduler() functioning the way that it should." />
-    <option name="LAST_COMMIT_MESSAGE" value="Got the printing info in scheduler() functioning the way that it should." />
+    <MESSAGE value="Added simple new file to test program with" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added simple new file to test program with" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="17" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CPU.cc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3691">
-          <caret line="365" column="5" selection-start-line="365" selection-start-column="5" selection-end-line="365" selection-end-column="5" />
-          <folding>
-            <element signature="e#3331#3673#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CPU.cc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="431" column="17" lean-forward="true" selection-start-line="431" selection-start-column="17" selection-end-line="431" selection-end-column="17" />
+          <folding>
+            <element signature="e#3331#3673#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
