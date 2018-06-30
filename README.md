@@ -210,5 +210,6 @@ continuing    17961
 in CPU.cc at 265 sending signal = 14  
 in CPU.cc at 266 to pid = 17959  
 in CPU.cc at 270 at end of send_signals  
-In ISR stopped: Terminated: 15  
+In ISR stopped:  
+Terminated: 15  
 ---------------------------------------------------------------------------  
