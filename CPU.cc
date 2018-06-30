@@ -8,6 +8,7 @@
 #include <signal.h>
 #include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <assert.h>
@@ -302,7 +303,7 @@ void scheduler(int signum)
     WRITES("---- entering scheduler\n");
     assert(signum == SIGALRM);
     sys_time++;
-    int found_one = 0;
+    int found_one = 0, running_pid_start = running->pid;
 
     for(int i = 0; i < processes.size(); i++)
     {
@@ -342,12 +343,6 @@ void scheduler(int signum)
             found_one = 1;
             break;
         }
-        else if(front->state == RUNNING)
-        {
-            front->interrupts++;
-            front->switches++;
-            front->state = READY;
-        }
         if(!found_one)
         {
             WRITES("running IDLE process\n")
@@ -360,12 +355,20 @@ void scheduler(int signum)
         }
     }
 
+    if(running->pid == running_pid_start)
+    {
+        running->interrupts++;
+    }
+    else
+    {
+        running->interrupts++;
+        running->switches++;
+    }
     if(running->pid > 0)
     {
         WRITES("continuing");
         WRITEI(running->pid);
-        WRITES("\n");
-        WRITES("---- leaving scheduler\n");
+        WRITES("\n---- leaving scheduler\n");
     }
 }
 
