@@ -463,6 +463,7 @@ void scheduler(int signum)
     WRITES("---- entering scheduler\n");
     assert(signum == SIGALRM);
     sys_time++;
+
     int found_one = 0;
 
     for(int i = 0; (unsigned)i < processes.size(); i++)
@@ -569,6 +570,7 @@ void process_done(int signum)
 
     /* restart idle process */
     idle->state = RUNNING;
+    idle->interrupts++;
     running = idle;
     if(kill(running->pid, SIGCONT) == -1)
     {
