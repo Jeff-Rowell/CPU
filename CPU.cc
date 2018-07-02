@@ -490,7 +490,8 @@ void scheduler(int signum)
             front->started = sys_time;
             running = front;
 
-            if((front->pid = fork()) == 0)
+            assertsyscall((front->pid = fork()), != -1);
+            if(front->pid == 0)
             {
                 assertsyscall(execl(front->name, front->name, NULL), != -1);
             }
@@ -578,7 +579,6 @@ void process_done(int signum)
 
     /* restart idle process */
     idle->state = RUNNING;
-    idle->interrupts++;
     running = idle;
     if(kill(running->pid, SIGCONT) == -1)
     {
