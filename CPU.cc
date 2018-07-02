@@ -20,212 +20,214 @@ output (approximately):
 $ ./CPU ./myscript ./myscript ./myscript
 state:        3
 name:         IDLE
-pid:          17961
-ppid:         17959
+pid:          20480
+ppid:         20478
 interrupts:   0
 switches:     0
 started:      0
-in CPU.cc at 260 at beginning of send_signals getpid() = 17960
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17961
+in CPU.cc at 423 at beginning of send_signals getpid() = 20479
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20480
 ---- entering scheduler
 running NEW process
-continuing    17962
+continuing    20481
 ---- leaving scheduler
-Process 17962 1
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17962
+Process 20481 1
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20481
 ---- entering scheduler
 running NEW process
-continuing    17964
+continuing    20483
 ---- leaving scheduler
-Process 17964 1
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17964
+Process 20483 1
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20483
 ---- entering scheduler
 running NEW process
-continuing    17966
+continuing    20485
 ---- leaving scheduler
-Process 17966 1
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17966
+Process 20485 1
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20485
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17962
+continuing    20481
 ---- leaving scheduler
-Process 17962 2
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17962
+Process 20481 2
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20481
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17964
+continuing    20483
 ---- leaving scheduler
-Process 17964 2
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17964
+Process 20483 2
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20483
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17966
+continuing    20485
 ---- leaving scheduler
-Process 17966 2
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17966
+Process 20485 2
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20485
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17962
+continuing    20481
 ---- leaving scheduler
-Process 17962 3
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17962
+Process 20481 3
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20481
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17964
+continuing    20483
 ---- leaving scheduler
-Process 17964 3
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17964
+Process 20483 3
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20483
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17966
+continuing    20485
 ---- leaving scheduler
-Process 17966 3
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17966
+Process 20485 3
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20485
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17962
+continuing    20481
 ---- leaving scheduler
-Process 17962 4
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17962
+Process 20481 4
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20481
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17964
+continuing    20483
 ---- leaving scheduler
-Process 17964 4
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17964
+Process 20483 4
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20483
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17966
+continuing    20485
 ---- leaving scheduler
-Process 17966 4
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17966
+Process 20485 4
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20485
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17962
+continuing    20481
 ---- leaving scheduler
-Process 17962 5
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17962
+Process 20481 5
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20481
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17964
+continuing    20483
 ---- leaving scheduler
-Process 17964 5
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17964
+Process 20483 5
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20483
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17966
+continuing    20485
 ---- leaving scheduler
-Process 17966 5
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17966
+Process 20485 5
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20485
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17962
+continuing    20481
 ---- leaving scheduler
 ---- entering process_done
 process exited:
 state:        4
 name:         ./myscript
-pid:          17962
-ppid:         17959
+pid:          20481
+ppid:         20478
 interrupts:   5
 switches:     5
 started:      1
-total system time:       15
+process took 15 second(s) to execute
 ---- leaving process_done
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17961
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20480
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17964
+continuing    20483
 ---- leaving scheduler
 ---- entering process_done
 process exited:
 state:        4
 name:         ./myscript
-pid:          17964
-ppid:         17959
+pid:          20483
+ppid:         20478
 interrupts:   5
 switches:     5
 started:      2
-total system time:       15
+process took 15 second(s) to execute
 ---- leaving process_done
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17961
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20480
 ---- entering scheduler
 running READY process
 a switch has occurred
-continuing    17966
+continuing    20485
 ---- leaving scheduler
 ---- entering process_done
 process exited:
 state:        4
 name:         ./myscript
-pid:          17966
-ppid:         17959
+pid:          20485
+ppid:         20478
 interrupts:   5
 switches:     5
 started:      3
-total system time:       15
+process took 15 second(s) to execute
 ---- leaving process_done
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-In ISR stopped:     17961
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+In ISR stopped:     20480
 ---- entering scheduler
-continuing    17961
+continuing    20480
 ---- leaving scheduler
-in CPU.cc at 265 sending signal = 14
-in CPU.cc at 266 to pid = 17959
-in CPU.cc at 270 at end of send_signals
-In ISR stopped: Terminated: 15
----------------------------------------------------------------------------
+in CPU.cc at 428 sending signal = 14
+in CPU.cc at 429 to pid = 20478
+in CPU.cc at 433 at end of send_signals
+In ISR stopped:     20480
+---- entering scheduler
+Terminated: 15
+ ---------------------------------------------------------------------------
 Added the following functionality.
 1) Changed the NUM_SECONDS to 20.
 
@@ -610,6 +612,8 @@ void boot()
         delete(alarm);
         delete(child);
         delete(idle);
+        delete(running);
+        delete(temp);
         kill(0, SIGTERM);
     }
 
