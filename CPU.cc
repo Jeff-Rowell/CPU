@@ -300,6 +300,7 @@ struct PCB
 
 PCB *running;
 PCB *idle;
+PCB *temp;
 
 // http://www.cplusplus.com/reference/list/list/
 list<PCB *> new_list;
@@ -463,15 +464,19 @@ void scheduler(int signum)
     WRITES("---- entering scheduler\n");
     assert(signum == SIGALRM);
     sys_time++;
-
+    temp = running;
     int found_one = 0;
 
-    for(int i = 0; (unsigned)i < processes.size(); i++)
+    if(running->state != TERMINATED)
+    {
+        running->interrupts++;
+    }
+
+    for(unsigned int i = 0; i < processes.size(); i++)
     {
         PCB *front = processes.front();
         processes.pop_front();
         processes.push_back(front);
-        front->interrupts++;
 
         if(front->state == NEW)
         {
@@ -494,9 +499,12 @@ void scheduler(int signum)
         {
             WRITES("running READY process\n");
             front->state = RUNNING;
-            front->switches++;
-            WRITES("a switch has occurred\n");
             running = front;
+            if(temp != running)
+            {
+                WRITES("a switch has occurred\n");
+                running->switches++;
+            }
 
             if(kill(front->pid, SIGCONT) == -1)
             {
@@ -532,7 +540,7 @@ void process_done(int signum)
     WRITES("---- entering process_done\n");
 
     // might have multiple children done.
-    for(int i = 0; (unsigned)i < processes.size(); i++)
+    for(unsigned int i = 0; i < processes.size(); i++)
     {
         int status, cpid;
 
@@ -560,9 +568,7 @@ void process_done(int signum)
                 {
                     (process)->state = TERMINATED;
                     cout << (process);
-                    WRITES("total system time:");
-                    WRITEI( (sys_time) - process->started);
-                    WRITES("\n");
+                    cout << "process took " << sys_time - process->started << " second(s) to execute\n";
                 }
             }
         }
