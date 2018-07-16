@@ -13,6 +13,19 @@
 #include <sys/wait.h>
 #include <assert.h>
 
+
+/*
+ * I received help from Dr. Beaty's assignment #3
+ *
+ * Changes:
+ * ----------
+ * 1) Added assert to create_idle()
+ * 2)
+ * 3)
+ *
+ */
+
+
 /*
 If compiled with -DEBUG, when run it should produce the following
 output (approximately):
@@ -482,7 +495,8 @@ void scheduler(int signum)
 
         if(front->state == NEW)
         {
-            WRITES("running NEW process\n");
+            WRITES("starting: ");
+            WRITES(front->name);
             front->state = RUNNING;
             front->ppid = getpid();
             front->switches = 0;
@@ -500,12 +514,13 @@ void scheduler(int signum)
         }
         else if(front->state == READY)
         {
-            WRITES("running READY process\n");
+            WRITES("continuing ");
+            WRITEI(front->pid);
             front->state = RUNNING;
             running = front;
             if(temp != running)
             {
-                WRITES("a switch has occurred\n");
+                WRITES("\na switch has occurred");
                 running->switches++;
             }
 
@@ -513,34 +528,30 @@ void scheduler(int signum)
             {
                 WRITES("in scheduler kill error: ");
                 WRITEI(errno);
-                WRITES("\n");
                 kill(0, SIGTERM);
             }
             found_one = 1;
             break;
         }
-        if(!found_one)
-        {
-            idle->state = RUNNING;
-            if (kill(idle->pid, SIGCONT) == -1)
-            {
-                kill(0, SIGTERM);
-            }
-        }
     }
 
-    if(running->pid > 0)
+    if(!found_one)
     {
-        WRITES("continuing");
-        WRITEI(running->pid);
-        WRITES("\n---- leaving scheduler\n");
+        WRITES("continuing idle");
+        idle->state = RUNNING;
+        running = idle;
+        if (kill(idle->pid, SIGCONT) == -1)
+        {
+            kill(0, SIGTERM);
+        }
     }
+    WRITES("\n---- leaving scheduler\n");
 }
 
 void process_done(int signum)
 {
-    assert(signum == SIGCHLD);
     WRITES("---- entering process_done\n");
+    assert(signum == SIGCHLD);
 
     // might have multiple children done.
     for(unsigned int i = 0; i < processes.size(); i++)
@@ -548,7 +559,7 @@ void process_done(int signum)
         int status, cpid;
 
         // we know we received a SIGCHLD so don't wait.
-        cpid = waitpid(-1, &status, WNOHANG);
+        assertsyscall((cpid = waitpid(-1, &status, WNOHANG)), >= 0);
 
         if(cpid < 0)
         {
@@ -571,13 +582,14 @@ void process_done(int signum)
                 {
                     (process)->state = TERMINATED;
                     cout << (process);
-                    cout << "process took " << sys_time - process->started << " second(s) to execute\n";
+                    cout << "process took " << sys_time - (process->started) << " second(s) to execute\n";
                 }
             }
         }
     }
 
     /* restart idle process */
+    WRITES("continuing idle\n");
     idle->state = RUNNING;
     running = idle;
     if(kill(running->pid, SIGCONT) == -1)
@@ -632,8 +644,9 @@ void create_idle()
     idle->interrupts = 0;
     idle->switches = 0;
     idle->started = sys_time;
+    assertsyscall((idle->pid = fork()), != -1);
 
-    if((idle->pid = fork()) == 0)
+    if(idle->pid == 0)
     {
         pause();
         perror("pause in create_idle");
@@ -647,11 +660,15 @@ int main(int argc, char **argv)
         PCB* process_i = new(PCB);
         process_i->state = NEW;
         process_i->name = argv[i];
+        process_i->pid = 0;
+        process_i->ppid = 0;
+        process_i->interrupts = 0;
+        process_i->switches = 0;
+        process_i->started = 0;
         processes.push_back(process_i);
     }
 
     boot();
-
     create_idle();
     running = idle;
     cout << running;
