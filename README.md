@@ -1,4 +1,4 @@
-# CPU --- OS Assignment 3
+# CPU --- A lightweight kernel
 
 If compiled with -DEBUG, when run it should produce the following
 output (approximately):
